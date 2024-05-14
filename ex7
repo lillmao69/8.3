@@ -1,0 +1,14 @@
+def process_anfisa(query):
+    if query == 'сколько у меня друзей?':
+        count = len(DATABASE)
+        formatted_count = format_friends_count(count)  # Вызов функции format_friends_count()
+        return f'У тебя {formatted_count}.'
+    elif query == 'кто все мои друзья?':
+        friends_string = ', '.join(DATABASE)
+        return f'Твои друзья: {friends_string}'
+    elif query == 'где все мои друзья?':
+        unique_cities = set(DATABASE.values())
+        cities_string = ', '.join(unique_cities)
+        return f'Твои друзья в городах: {cities_string}'
+    else:
+        return '<неизвестный запрос>'

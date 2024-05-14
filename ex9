@@ -1,0 +1,34 @@
+DATABASE = {
+    'Анфиса': {
+        'город': 'Москва',
+        'друзья': ['Коля', 'Соня', 'Антон']
+    },
+    'Коля': {
+        'город': 'Санкт-Петербург'
+    },
+    'Соня': {
+        'город': 'Казань'
+    }
+}
+
+def process_friend(name, query):
+    if name in DATABASE:
+        if query == 'ты где?':
+            city = DATABASE[name]['город']
+            return f'{name} в городе {city}'
+        else:
+            return '<неизвестный запрос>'
+    else:
+        return f'У тебя нет друга по имени {name}'
+
+def process_query(query):
+    name, question = query.split(', ', 1)
+    
+    if name == 'Анфиса':
+        return process_anfisa(question)
+    else:
+        return process_friend(name, question)
+
+# Новые вызовы функции process_query()
+print(process_query('Коля, что делать?'))
+print(process_query('Антон, ты где?'))
